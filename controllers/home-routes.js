@@ -7,6 +7,7 @@ const { Post, User, Comment } = require('../models');
 
 // Main "root" home page
 router.get('/', (req, res) => {
+    console.log(req.session);
     Post.findAll({
         attributes: [
             'id',
@@ -42,6 +43,10 @@ router.get('/', (req, res) => {
 
 // login/signup page
 router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
     res.render('login');
 })
 ;
