@@ -10,6 +10,10 @@ router.use('/', homeRoutes);
 
 router.use('/api', apiRoutes);
 
+const dashboardRoutes = require('./dashboard-routes.js');
+
+router.use('/dashboard', dashboardRoutes);
+
 // sends back error if attempting to use a route that doesn't exist
 router.use((req,res) => {
     res.status(404).end();
